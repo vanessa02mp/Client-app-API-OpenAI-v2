@@ -13,11 +13,12 @@
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
         .container {
             text-align: center;
             flex-grow: 1;
+            padding-bottom: 80px; /* Espacio para el footer */
         }
         .card {
             background: rgba(255, 255, 255, 0.1);
@@ -25,6 +26,7 @@
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
         }
         .btn-custom {
             background: #ff9800;
@@ -42,12 +44,47 @@
             border-radius: 10px;
             width: 100%;
             text-align: center;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             height: 60px;
         }
+        .history-table {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .history-table table {
+            margin-bottom: 0;
+            color: white;
+        }
+        .history-table thead {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .history-table th, 
+        .history-table td {
+            padding: 12px 15px;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .history-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        .btn-danger {
+    background: #dc3545;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+}
+.btn-danger:hover {
+    background: #c82333;
+}
     </style>
+
 </head>
 
 <body>
@@ -56,8 +93,9 @@
             <h1 class="fw-bold">Reconocimiento de Voz</h1>
         </header>
         
-        <main class="d-flex justify-content-center align-items-center flex-grow-1">
-            <div class="card text-center">
+        <main class="d-flex justify-content-center align-items-center flex-column w-100">
+            <!-- Tarjeta principal de reconocimiento de voz -->
+            <div class="card text-center" style="width: 100%; max-width: 600px;">
                 <img src="assets/img/micro.png" class="card-img-top mx-auto" style="width: 6rem;" alt="Micrófono">
                 <div class="card-body">
                     <h2 id="outputText" class="fs-4 fw-light text-white"></h2>
@@ -69,11 +107,34 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Nuevo contenedor para la tabla de registros -->
+            <div class="card history-table mt-4" style="width: 100%; max-width: 800px;">
+                <div class="card-body">
+                    <h3 class="history-title text-center">Últimos Comandos</h3>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>IP</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <!-- Los registros se cargarán aquí dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     
     <footer>
-        <p class="mb-0">Desarrollado por Vanessa Meneses Perez | IHC</p>
+        <p class="mb-0">Desarrollado por: Víctor Pinedo | IHC</p>
     </footer>
     
     <script src="js/main.js"></script>
