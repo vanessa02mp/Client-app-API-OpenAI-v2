@@ -10,9 +10,9 @@ const comandosMap = {
   "DETENER": "DETENER",
 
   // Comandos de vueltas
-  "VUELTA ADELANTE DERECHA": "V_ADE_DER",
+  "VUELTA ATRAS DERECHA": "V_ATR_DER",
   "VUELTA DERECHA": "V_ADE_DER",
-  "VUELTA ADELANTE IZQUIERDA": "V_ADE_IZQ",
+  "VUELTA ATRAS IZQUIERDA": "V_ATR_IZQ",
   "VUELTA IZQUIERDA": "V_ADE_IZQ",
   
   // Comandos de giros
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función para enviar comando a la API de OpenAI
 async function enviarComando(comando) {
-    const url = "http://44.211.245.14/API-GPT-e-PHP/endpoints/chat.php";
+    const url = "http://3.237.195.67/API-GPT-e-PHP/endpoints/chat.php";
     const datos = { message: comando };
     const respuestaElemento = document.getElementById("responseText");
     const apiResponseDiv = document.getElementById("apiResponse");
@@ -166,7 +166,7 @@ async function insertarEnBaseDatos(respuestaAPI) {
     };
 
     try {
-        const respuesta = await fetch("http://44.211.245.14/iot-api-php/controllers/AddIotDevice.php", {
+        const respuesta = await fetch("http://3.237.195.67/iot-api-php/controllers/AddIotDevice.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -197,7 +197,7 @@ async function cargarUltimosRegistros() {
             </tr>
         `;
         
-        const respuesta = await fetch("http://44.211.245.14/iot-api-php/controllers/GetLastFiveDevices.php");
+        const respuesta = await fetch("http://3.237.195.67/iot-api-php/controllers/GetLastFiveDevices.php");
         
         if (!respuesta.ok) {
             throw new Error(`Error HTTP: ${respuesta.status}`);
