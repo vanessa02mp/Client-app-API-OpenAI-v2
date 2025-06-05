@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función para enviar comando a la API de OpenAI
 async function enviarComando(comando) {
-    const url = "http://44.193.9.198/API-GPT-e-PHP/endpoints/chat.php";
+    const url = "http://3.238.34.47/API-GPT-e-PHP/endpoints/chat.php";
     const datos = { message: comando };
     const respuestaElemento = document.getElementById("responseText");
     const apiResponseDiv = document.getElementById("apiResponse");
@@ -166,7 +166,7 @@ async function insertarEnBaseDatos(respuestaAPI) {
     };
 
     try {
-        const respuesta = await fetch("http://44.193.9.198/iot-api-php/controllers/AddIotDevice.php", {
+        const respuesta = await fetch("http://3.238.34.47/iot-api-php/controllers/AddIotDevice.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -197,7 +197,7 @@ async function cargarUltimosRegistros() {
             </tr>
         `;
         
-        const respuesta = await fetch("http://44.193.9.198/iot-api-php/controllers/GetLastFiveDevices.php");
+        const respuesta = await fetch("http://3.238.34.47/iot-api-php/controllers/GetLastFiveDevices.php");
         
         if (!respuesta.ok) {
             throw new Error(`Error HTTP: ${respuesta.status}`);
